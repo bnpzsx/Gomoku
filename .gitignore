@@ -1,0 +1,7 @@
+C++.gitignore
+*.mod
+*.txt
+*.exe
+*.cmd
+*.py
+*.pyc

@@ -1,7 +1,12 @@
 C++.gitignore
 *.mod
 *.txt
-*.exe
 *.cmd
 *.py
 *.pyc
+*.dsp
+*.dsw
+*.ncb
+*.opt
+*.plg
+/Debug

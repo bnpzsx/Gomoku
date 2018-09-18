@@ -3,7 +3,7 @@ module gomoku_m
     type gomoku
         integer						:: chess(N,N)
 		integer						:: n_zeros=N*N
-		integer,pointer				:: zeros(:,:)
+		integer						:: zeros(N*N,2)
     end type
     
 	contains
@@ -71,10 +71,9 @@ module gomoku_m
 	subroutine getzeros(g,r)
 		implicit none
 		type(gomoku),intent(in)			:: g
-		integer,pointer					:: r(:,:)
-		integer 						:: i,j,t
+		integer							:: r(:,:)
+		integer							:: i,j,t
 		t=1
-		allocate(r(g%n_zeros,2))
 		do i = 1,N
 			do j =1,N
 				if(g%chess(i,j)==0) then
@@ -96,25 +95,3 @@ module gomoku_m
 	end function
 	
 end module
-
-program main
-	use gomoku_m
-	implicit none
-	type(gomoku)					:: a
-	integer							:: i,j,k,temp(10),w
-	integer,pointer					:: r(:,:)
-	print *,"hello,world!",Win,N
-	call random_seed() 
-	w=1
-	do 
-		i=randint(1,a%n_zeros)
-		call getzeros(a,r)
-		call down(a,r(i,1),r(i,2),w)
-		call show(a)
-		j=judge(a,r(i,1),r(i,2))
-		if(j/=0) exit
-		w=-w
-	end do
-	print *,j
-
-end program

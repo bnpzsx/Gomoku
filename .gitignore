@@ -10,3 +10,4 @@ C++.gitignore
 *.opt
 *.plg
 /Debug
+*.obj

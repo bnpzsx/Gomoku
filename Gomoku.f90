@@ -20,7 +20,7 @@ module gomoku_m
 			g%chess(x,y)=0
 			g%n_zeros=g%n_zeros+1
 		else
-			print '(I2," already in(",I1,",",I2,")")',g%chess(x,y),x,y
+			print '(I2," already in(",I2,",",I2,")")',g%chess(x,y),x,y
 		end if
 	end subroutine
 
@@ -40,7 +40,7 @@ module gomoku_m
 		type(gomoku)				:: g
 		integer,intent(in)			:: x,y
 		integer						:: i,w,t,l(4)
-		integer,save				:: D(4,2)=(/0,-1,-1,-1,-1,-1,0,1/) !按列读取
+		integer,save				:: D(4,2)=reshape((/0,-1,-1,-1,-1,-1,0,1/),(/4,2/)) !按列读取
 		t=g%chess(x,y)
 		w=0
 		if(t==0) return
